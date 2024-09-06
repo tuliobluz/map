@@ -7,6 +7,7 @@ export class SearchPage {
   readonly page: Page;
   readonly searchInput: Locator;
   readonly searchButton: Locator;
+  readonly locatorText: (text: string) => Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -14,6 +15,8 @@ export class SearchPage {
     this.directionButton = page.getByText('Directions');
     this.headlineMain = (searchText: string) =>
       page.getByRole('heading', { name: searchText });
+    this.locatorText = (text: string) =>
+      page.getByText(text);
     this.searchInput = page.getByTestId('searchboxinput');
     this.searchButton = page.getByTestId('searchbox-searchbutton');
   }

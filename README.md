@@ -33,7 +33,7 @@ The following is the suggested folder structure for Playwright tests:
 
 ## How to Run
 
-To run the tests, you can use either the terminal or the headless mode. The following commands will be useful:
+To run the tests, you can use either on the terminal on headless mode or via Playwright UI. The following commands will be useful:
 
 * `npm run e2e:allTests`: runs all the tests in headless browser.
 * `npm run e2e:openUi`: Run your tests with UI Mode for a better developer experience with time travel debugging, watch mode, and more with [trace-view](https://playwright.dev/docs/trace-viewer-intro).
@@ -50,19 +50,13 @@ HTML reporter produces a self-contained folder that contains report for the test
 
 The report contains the running scenarios, if you open the view trace functionality, you can follow your test by clicking through each action or hovering using the timeline and see the state of the page before and after the action. Inspect the log, source and network, errors and console during each step of the test. The trace viewer creates a DOM snapshot so you can fully interact with it and open the browser DevTools to inspect the HTML, CSS, etc.
 
-### Openning trace view locally
-
-Viewing the HTML Report Locally opening the report will not work as expected as you need a web server in order for everything to work correctly. First, extract the zip, preferably in a folder that already has Playwright installed. Using the command line change into the directory where the report is and use npx playwright show-report followed by the name of the extracted folder. This will serve up the report and enable you to view it in your browser.
-
-`npx playwright show-report name-of-my-extracted-playwright-report`
-
 ### Investigating failures
 
 When failures happen in the CI you can download the summary, open the report, and click on the [trace-view](https://playwright.dev/docs/trace-viewer-intro) icon to follow up what is wrong.
 
 ## GitHub Actions Integration
 
-You can also change the baseUrl setting up the env variable `BASE_URL` [here](https://github.com/tuliobluz/map/blob/main/playwright.config.ts#L28)
+You can also change the baseUrl setting up the env variable `BASE_URL` [here](https://github.com/tuliobluz/map/blob/main/playwright.config.ts#L19)
 
 This project includes a GitHub Actions workflow for running playwright end-to-end tests. The workflow is triggered when you push changes to the repository. The following steps are executed:
 
@@ -72,6 +66,14 @@ This project includes a GitHub Actions workflow for running playwright end-to-en
 4. Upload the HTML report as an artifact.
 
 The generated HTML report can be accessed through the GitHub Actions summary.
+
+### Openning the html report from the GitHub [Actions](https://github.com/tuliobluz/map/actions)
+
+You can donwload the artifact opening a run and downloading the playwright-report
+
+Viewing the HTML Report Locally opening the report will not work as expected as you need a web server in order for everything to work correctly. First, extract the zip, preferably in a folder that already has Playwright installed. Using the command line change into the directory where the report is and use npx playwright show-report followed by the name of the extracted folder. This will serve up the report and enable you to view it in your browser.
+
+`npx playwright show-report name-of-my-extracted-playwright-report`
 
 ## Slack Integration
 

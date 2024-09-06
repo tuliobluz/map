@@ -17,10 +17,17 @@ test.describe('User search location', async () => {
   test('with directions', async ({ page }) => {
     const search = new SearchPage(page);
 
-    await search.submitSearch('Lodon')
+    await search.submitSearch(testData.directionSearch)
     await expect(search.headlineMain(testData.directionSearch)).toBeVisible();
 
     await search.clickDirection();
     await expect(search.destination(testData.destination)).toBeVisible();
+  });
+
+  test('that does not exist', async ({ page }) => {
+    const search = new SearchPage(page);
+
+    await search.submitSearch('wh3r3 y0u l00k1ng f0r')
+    await expect(search.locatorText('Google Maps can\'t find wh3r3 y0u l00k1ng f0r')).toBeVisible();
   });
 });
