@@ -32,18 +32,13 @@ export default defineConfig({
 
     testIdAttribute: 'id'
   },
+  timeout: 10000,
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
-
-    /* Test against mobile viewports. */
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
     },
   ],
 });

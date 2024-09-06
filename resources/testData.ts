@@ -1,6 +1,7 @@
 module.exports = {
 	testData: {
 		basicSearch: 'Paris',
-		directionSearch: 'London'
+		directionSearch: 'London',
+		destination: 'Destination London, UK'
 	},
 };

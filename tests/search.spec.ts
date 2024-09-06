@@ -21,6 +21,6 @@ test.describe('User search location', async () => {
     await expect(search.headlineMain(testData.directionSearch)).toBeVisible();
 
     await search.clickDirection();
-    await expect(search.destination(testData.directionSearch)).toBeVisible();
+    await expect(search.destination(testData.destination)).toBeVisible();
   });
 });
