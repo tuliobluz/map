@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
 jobs:
-  test:
+  playwright-e2e:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
@@ -25,3 +25,16 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 15
+
+  slack_success_result:
+      needs: [playwright-e2e]
+      name: Slack Notification
+      runs-on: ubuntu-latest
+      if: $${{ success() }}
+      steps:
+        - uses: actions/checkout@v4
+        - name: Send success message GitHub
+          uses: rtCamp/action-slack-notify@v2
+          env:
+            SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+            SLACK_FOOTER: SUCCESS!!!!

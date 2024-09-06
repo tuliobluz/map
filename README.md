@@ -35,7 +35,7 @@ The following is the suggested folder structure for Playwright tests:
 
 To run the tests, you can use either the terminal or the headless mode. The following commands will be useful:
 
-* `npm run e2e:allTests`: runs all the tests.
+* `npm run e2e:allTests`: runs all the tests in headless browser.
 * `npm run e2e:openUi`: Run your tests with UI Mode for a better developer experience with time travel debugging, watch mode, and more with [trace-view](https://playwright.dev/docs/trace-viewer-intro).
 
 The tests run in parallel, and the default configuration is set up to run on Chrome. However, it is possible to set up the tests to run on Edge, Firefox, and mobile emulators(for mobile it would be needed changes on the test code as the same scenarios has different behavior).
@@ -48,7 +48,7 @@ After running your test you can open the report:
 
 HTML reporter produces a self-contained folder that contains report for the test run that can be served as a web page.
 
-The report contains the scenarios, if you open the view trace functionality, you can follow your test by clicking through each action or hovering using the timeline and see the state of the page before and after the action. Inspect the log, source and network, errors and console during each step of the test. The trace viewer creates a DOM snapshot so you can fully interact with it and open the browser DevTools to inspect the HTML, CSS, etc.
+The report contains the running scenarios, if you open the view trace functionality, you can follow your test by clicking through each action or hovering using the timeline and see the state of the page before and after the action. Inspect the log, source and network, errors and console during each step of the test. The trace viewer creates a DOM snapshot so you can fully interact with it and open the browser DevTools to inspect the HTML, CSS, etc.
 
 ### Investigating failures
 
@@ -56,7 +56,7 @@ When failures happen in the CI you can download the summary, open the report, an
 
 ## GitHub Actions Integration
 
-You can also change the baseUrl setting up the env variable `BASE_URL`
+You can also change the baseUrl setting up the env variable `BASE_URL` [here](https://github.com/tuliobluz/map/blob/main/playwright.config.ts#L28)
 
 This project includes a GitHub Actions workflow for running playwright end-to-end tests. The workflow is triggered when you push changes to the repository. The following steps are executed:
 
@@ -66,3 +66,9 @@ This project includes a GitHub Actions workflow for running playwright end-to-en
 4. Upload the HTML report as an artifact.
 
 The generated HTML report can be accessed through the GitHub Actions summary.
+
+## Slack Integration
+
+After running the playwright-map, the GitHub Actions workflow sends a message to Slack channels. Currently, the message is sent when the job succeeds. In a real scenario, notifications can be sent for successful and failed jobs.
+
+If you want to join the Slack channel for integration, please use the following invitation link: [Slack Invitation Link](https://join.slack.com/t/github-integrationhq/shared_invite/zt-2q65wlp10-Gn4_m~YTN9gfhvq_ykw9oQ)
