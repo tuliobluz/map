@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "e2e:allTests": "npx playwright test",
+    "e2e:allTeststraceOn": "npx playwright test --trace on",
     "e2e:openUi": "npx playwright test --ui",
     "e2e:openReport": "npx playwright show-report"
   },
