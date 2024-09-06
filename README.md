@@ -31,16 +31,28 @@ The following is the suggested folder structure for Playwright tests:
     * `tests`: contains the specifications for the tests.
         * `demo.spec.js`: a sample specification.
 
-
 ## How to Run
 
 To run the tests, you can use either the terminal or the headless mode. The following commands will be useful:
 
 * `npm run e2e:allTests`: runs all the tests.
 * `npm run e2e:openUi`: Run your tests with UI Mode for a better developer experience with time travel debugging, watch mode and more with [trace-view](https://playwright.dev/docs/trace-viewer-intro).
-* `npm run e2e:openReport`: an HTML Reporter will be generated, which shows you a full report of your tests allowing you to filter the report by browsers, passed tests, failed tests, skipped tests and flaky tests.
 
 The tests run in parallel, and the default configuration is set up to run on Chromium and mobile Chrome Pixel 5. However, it is possible to set up the tests to run on Edge, Firefox, and mobile emulators.
+
+After running your test you can open the report:
+
+* `npm run e2e:openReport`: will open an HTML Reporter, which shows you a full report of your tests allowing you to filter the report by browsers, passed tests, failed tests, skipped tests and flaky tests.
+
+## HTML Report
+
+HTML reporter produces a self-contained folder that contains report for the test run that can be served as a web page.
+
+The report contains the sceanrios, if you open the view trace functionality, you can follow your test by clicking through each action or hovering using the timeline and see the state of the page before and after the action. Inspect the log, source and network, errors and console during each step of the test. The trace viewer creates a DOM snapshot so you can fully interact with it and open the browser DevTools to inspect the HTML, CSS, etc.
+
+### Investigating failures
+
+When failures happen in the CI you can download the summary, open the report, and click on the [trace-view](https://playwright.dev/docs/trace-viewer-intro) icon to follow up what is wrong.
 
 ## GitHub Actions Integration
 
@@ -54,7 +66,3 @@ This project includes a GitHub Actions workflow for running playwright end-to-en
 4. Upload the HTML report as an artifact.
 
 The generated HTML report can be accessed through the GitHub Actions summary.
-
-## Investigating failures
-
-When failures happen in the CI you can download the summary, open the report, and click on the [trace-view](https://playwright.dev/docs/trace-viewer-intro) icon to follow up what is wrong.
