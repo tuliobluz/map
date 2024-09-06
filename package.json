@@ -1,0 +1,22 @@
+{
+  "name": "map-with-playwright",
+  "version": "1.0.0",
+  "description": "the respository will be testing google maps with playwright",
+  "main": "index.js",
+  "scripts": {
+    "e2e:allTests": "npx playwright test",
+    "e2e:openUi": "npx playwright test --ui",
+    "e2e:openReport": "npx playwright show-report"
+  },
+  "keywords": [
+    "playwright",
+    "maps",
+    "ui"
+  ],
+  "author": "Túlio Luz",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "@types/node": "^22.5.4"
+  }
+}
