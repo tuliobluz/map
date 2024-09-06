@@ -27,8 +27,10 @@ The following is the suggested folder structure for Playwright tests:
 * `playwright`
     * `.github`: contains a template for GitHub actions.
     * `pages`: contains the page objects to be used on the spec tests
+    * `resources`: contains test data and files to be used in tests.
     * `tests`: contains the specifications for the tests.
         * `demo.spec.js`: a sample specification.
+
 
 ## How to Run
 
@@ -38,7 +40,7 @@ To run the tests, you can use either the terminal or the headless mode. The foll
 * `npm run e2e:openUi`: Run your tests with UI Mode for a better developer experience with time travel debugging, watch mode and more with [trace-view](https://playwright.dev/docs/trace-viewer-intro).
 * `npm run e2e:openReport`: an HTML Reporter will be generated, which shows you a full report of your tests allowing you to filter the report by browsers, passed tests, failed tests, skipped tests and flaky tests.
 
-The tests run in parallel, and the default configuration is set up to run on Chromium, firefox and mobile Chrome Pixel 5. However, it is possible to set up the tests to run on Edge, Firefox, and mobile emulators.
+The tests run in parallel, and the default configuration is set up to run on Chromium and mobile Chrome Pixel 5. However, it is possible to set up the tests to run on Edge, Firefox, and mobile emulators.
 
 ## GitHub Actions Integration
 

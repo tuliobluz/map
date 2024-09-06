@@ -1,38 +1,26 @@
 import { test, expect } from '@playwright/test';
+import { SearchPage } from '../pages/search'
+
+const testData = require("../resources/testData").testData;
 
 test.describe('User search location', async () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('');
   });
   test('basic', async ({ page }) => {
-    const newTodo = await page.getByTestId('searchboxinput');
+    const search = new SearchPage(page);
 
-    await newTodo.fill('Paris');
-    await page.getByTestId('searchbox-searchbutton').click();
-
-    await expect(page
-      .getByRole('main')
-      .filter({ hasText: 'Paris' })).toBeVisible();
+    await search.submitSearch(testData.basicSearch)
+    await expect(search.headlineMain(testData.basicSearch)).toBeVisible();
   });
 
   test('with directions', async ({ page }) => {
-    const newTodo = await page.getByTestId('searchboxinput');
+    const search = new SearchPage(page);
 
-    await newTodo.fill('London');
-    await page.getByTestId('searchbox-searchbutton').click();
+    await search.submitSearch('Lodon')
+    await expect(search.headlineMain(testData.directionSearch)).toBeVisible();
 
-    const headline = page
-      .getByRole('main')
-      .filter({ hasText: 'London' });
-
-    await expect(headline).toBeVisible;
-
-    await page.getByText('Directions').click();
-
-    const destination = page
-      .getByRole('listitem')
-      .filter({ hasText: 'London' });
-
-    await expect(destination).toBeVisible();
+    await search.clickDirection();
+    await expect(search.destination(testData.directionSearch)).toBeVisible();
   });
 });
