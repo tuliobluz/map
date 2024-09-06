@@ -50,6 +50,12 @@ HTML reporter produces a self-contained folder that contains report for the test
 
 The report contains the running scenarios, if you open the view trace functionality, you can follow your test by clicking through each action or hovering using the timeline and see the state of the page before and after the action. Inspect the log, source and network, errors and console during each step of the test. The trace viewer creates a DOM snapshot so you can fully interact with it and open the browser DevTools to inspect the HTML, CSS, etc.
 
+### Openning trace view locally
+
+Viewing the HTML Report Locally opening the report will not work as expected as you need a web server in order for everything to work correctly. First, extract the zip, preferably in a folder that already has Playwright installed. Using the command line change into the directory where the report is and use npx playwright show-report followed by the name of the extracted folder. This will serve up the report and enable you to view it in your browser.
+
+`npx playwright show-report name-of-my-extracted-playwright-report`
+
 ### Investigating failures
 
 When failures happen in the CI you can download the summary, open the report, and click on the [trace-view](https://playwright.dev/docs/trace-viewer-intro) icon to follow up what is wrong.
